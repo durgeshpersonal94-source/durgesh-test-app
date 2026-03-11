@@ -20,6 +20,7 @@ export default function AdditionalPage() {
             <BlockStack gap="300">
               <Text as="p" variant="bodyMd">
                 The app template comes with an additional page which
+                asdfggfffffffffffffff6665fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
                 demonstrates how to create multiple pages within app navigation
                 using{" "}
                 <Link
