@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { useFetcher } from "@remix-run/react";
+import { useFetcher, Link as RemixLink } from "@remix-run/react";
 import {
   Page,
   Layout,
@@ -323,6 +323,21 @@ export default function Index() {
                       </Link>
                     </List.Item>
                   </List>
+                </BlockStack>
+              </Card>
+              <Card>
+                <BlockStack gap="200">
+                  <Text as="h2" variant="headingMd">
+                    Address Management
+                  </Text>
+                  <Text as="p" variant="bodyMd">
+                    Manage customer addresses with full CRUD operations.
+                  </Text>
+                  <RemixLink to="/addresses">
+                    <Button fullWidth>
+                      Go to Address Manager
+                    </Button>
+                  </RemixLink>
                 </BlockStack>
               </Card>
             </BlockStack>

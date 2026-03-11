@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # MongoDB Service
+  mongodb:
+    image: mongo:7.0-latest
+    container_name: shopify-app-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: shopify_user
+      MONGO_INITDB_ROOT_PASSWORD: shopify_password
+      MONGO_INITDB_DATABASE: shopify-app
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - shopify-network
+    healthcheck:
+      test: ['CMD', 'mongosh', '--eval', "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 40s
+
+  # MongoDB Express - Web UI
+  mongoexpress:
+    image: mongo-express:latest
+    container_name: shopify-app-mongo-express
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: shopify_user
+      ME_CONFIG_MONGODB_ADMINPASSWORD: shopify_password
+      ME_CONFIG_MONGODB_URL: mongodb://shopify_user:shopify_password@mongodb:27017/
+      ME_CONFIG_BASICAUTH: 'true'
+      ME_CONFIG_BASICAUTH_USERNAME: admin
+      ME_CONFIG_BASICAUTH_PASSWORD: admin
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    networks:
+      - shopify-network
+
+volumes:
+  mongodb-data:
+    driver: local
+
+networks:
+  shopify-network:
+    driver: bridge
