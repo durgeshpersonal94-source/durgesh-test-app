@@ -13,51 +13,29 @@ import { TitleBar } from "@shopify/app-bridge-react";
 export default function AdditionalPage() {
   return (
     <Page>
-      <TitleBar title="Additional page" />
+      <TitleBar title="Edit Address Details" />
       <Layout>
         <Layout.Section>
           <Card>
             <BlockStack gap="300">
               <Text as="p" variant="bodyMd">
-                The app template comes with an additional page which
-                asdfggfffffffffffffff6665fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
-                demonstrates how to create multiple pages within app navigation
-                using{" "}
-                <Link
-                  url="https://shopify.dev/docs/apps/tools/app-bridge"
-                  target="_blank"
-                  removeUnderline
-                >
-                  App Bridge
-                </Link>
-                .
+                Edit Address Details
               </Text>
               <Text as="p" variant="bodyMd">
-                To create your own page and have it show up in the app
-                navigation, add a page inside <Code>app/routes</Code>, and a
-                link to it in the <Code>&lt;NavMenu&gt;</Code> component found
-                in <Code>app/routes/app.jsx</Code>.
+                This page is accessible at <Code>/app/additional</Code>.
               </Text>
             </BlockStack>
           </Card>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <Card>
-            <BlockStack gap="200">
-              <Text as="h2" variant="headingMd">
-                Resources
+            <BlockStack gap="300">
+              <Text as="p" variant="bodyMd">
+                This is an example of an additional page in your app. You can add as many additional pages as you need, and link to them from the navigation menu in <Code>app.tsx</Code>.
               </Text>
-              <List>
-                <List.Item>
-                  <Link
-                    url="https://shopify.dev/docs/apps/design-guidelines/navigation#app-nav"
-                    target="_blank"
-                    removeUnderline
-                  >
-                    App nav best practices
-                  </Link>
-                </List.Item>
-              </List>
+              <Text as="p" variant="bodyMd">
+                To create your own page and have it show up in the app navigation, add a page inside <Code>app/routes</Code>, and a link to it in the <Code>&lt;NavMenu&gt;</Code> component found in <Code>app.tsx</Code>.
+              </Text>
             </BlockStack>
           </Card>
         </Layout.Section>
